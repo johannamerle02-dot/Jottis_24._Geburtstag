@@ -1,4 +1,5 @@
-<!doctype html>
+```html
+<!doctype html> 
 <html lang="de">
 <head>
 <meta charset="utf-8">
@@ -166,7 +167,8 @@ input::placeholder{color:#b88aa0}
   <div class="list">
 
     <div class="person"><b>Sonja</b><span class="small">Klassischer roter Lippenstift. Hoffentlich weniger Examensstress als erwartet.</span></div>
-    <div class="person"><b>Jonas & Elias</b><span class="small">Mathemäuse, vermutlich Arm in Arm. Jottis Eskapaden nicht einkalkuliert.</span></div>
+    <div class="person"><b>Jonas</b><span class="small">Mathe maus warscheinlich arm in arm mit Elias. Jottis Eskapaden nicht einkalkuliert.</span></div>
+    <div class="person"><b>Elias</b><span class="small">Mathe maus warscheinlich arm in arm mit Jonas. Jottis Eskapaden nicht einkalkuliert.</span></div>
     <div class="person"><b>Mirnesa</b><span class="small">Schlaue Ratschläge, tiefgründige Gespräche garantiert.</span></div>
     <div class="person"><b>Honey</b><span class="small">Goldschmuck-Expertin. Trägt sehr wahrscheinlich etwas Spannendes.</span></div>
     <div class="person"><b>Mona</b><span class="small">Beziehungsratschläge (vor allem bestätigende). Top Wanderpartnerin.</span></div>
@@ -184,8 +186,10 @@ input::placeholder{color:#b88aa0}
     <div class="person"><b>Daniel</b><span class="small">Extrem offen & ehrlich. Fragt ihn alles.</span></div>
     <div class="person"><b>Tim</b><span class="small">Luft- & Raumfahrtmaus. Viel Apfelwein & immer ein Spruch.</span></div>
     <div class="person"><b>Victor</b><span class="small">Mehr als Finance Bro. Interessiert sich sehr für Jotti.</span></div>
+    <div class="person"><b>Domi</b><span class="small">Domi ist psycholgie discord maus</span></div>
     <div class="person"><b>Johanna (Jotti)</b><span class="small">Ich!</span></div>
-    <div class="person"><b>Florian & Emina</b><span class="small">Neue Mitbewohner. Müssen unbedingt ausgefragt werden.</span></div>
+    <div class="person"><b>Florian</b><span class="small">Neuer Mitbewohner. Müssen unbedingt ausgefragt werden.</span></div>
+    <div class="person"><b>Emina</b><span class="small">Neue Mitbewohnerin. Müssen unbedingt ausgefragt werden.</span></div>
 
   </div>
 </div>
@@ -223,6 +227,7 @@ input::placeholder{color:#b88aa0}
     <span class="draggable">Tessa</span>
     <span class="draggable">Daniel</span>
     <span class="draggable">Tim</span>
+    <span class="draggable">Domi</span>
   </div>
 </div>
 
@@ -254,6 +259,43 @@ input::placeholder{color:#b88aa0}
 
   <p id="crazyChallengeResult" style="margin-top:14px;font-weight:900;font-size:18px;"></p>
   <p id="crazyChallengeMeta" class="small" style="margin-top:6px;"></p>
+</div>
+
+<!-- NEU: WER WÜRDE EHER -->
+<div class="card">
+  <h2>🍎🔥 Wer würde eher…?</h2>
+  <p class="small">Zwei Personen treten gegeneinander an. Jede Frage kommt nur einmal.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+    <button id="btnWW">🎲 Ziehen</button>
+    <button id="btnWWReset" style="background:#ffd1e6;color:#2b2b2b;">🔄 Reset</button>
+  </div>
+  <p id="wwResult" style="margin-top:14px;font-weight:900;font-size:18px;"></p>
+  <p id="wwMeta" class="small" style="margin-top:6px;"></p>
+</div>
+
+<!-- NEU: WER BIN ICH -->
+<div class="card">
+  <h2>🕵️ Wer bin ich?</h2>
+  <p class="small">Nur Ja/Nein Fragen. Bei jedem Nein 1 Schluck. Halte das Handy an die Stirn — der Name erscheint nach 10 Sekunden.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+    <button id="btnWho">🎭 Start</button>
+    <button id="btnWhoReset" style="background:#ffd1e6;color:#2b2b2b;">🔄 Reset</button>
+  </div>
+  <p id="whoCountdown" class="small" style="margin-top:10px;"></p>
+  <p id="whoResult" style="margin-top:12px;font-weight:900;font-size:42px;text-align:center;"></p>
+  <p id="whoMeta" class="small" style="margin-top:6px;text-align:center;"></p>
+</div>
+
+<!-- NEU: LOVE CALCULATOR -->
+<div class="card">
+  <h2>💘 Love Calculator</h2>
+  <p class="small">Gib zwei Namen ein. Ergebnis ist komplett wissenschaftlich (Quelle: Apfelwein).</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+    <input id="loveA" placeholder="Name 1..." style="padding:12px 14px;border-radius:14px;border:2px solid #ffd1e6;outline:none;font-weight:700;min-width:180px;">
+    <input id="loveB" placeholder="Name 2..." style="padding:12px 14px;border-radius:14px;border:2px solid #ffd1e6;outline:none;font-weight:700;min-width:180px;">
+    <button id="btnLove">💗 Berechnen</button>
+  </div>
+  <p id="loveResult" style="margin-top:14px;font-weight:900;font-size:18px;"></p>
 </div>
 
 <!-- SCHATZKISTE: RANDOM FACTS -->
@@ -426,6 +468,7 @@ var people = [
   "Daniel",
   "Tim",
   "Victor",
+  "Domi",
   "Johanna (Jotti)",
   "Florian",
   "Emina",
@@ -523,6 +566,112 @@ function resetCrazyChallenges(){
   setText("crazyChallengeMeta", "Noch im Pool: " + crazyPool.length + " / " + crazyChallenges.length);
 }
 
+/* ========= NEU: Wer würde eher (2 Gäste, 50 Fragen, jede nur einmal) ========= */
+var wwPeople = [
+  "Sonja","Jonas","Elias","Mirnesa","Honey","Mona","Zineb","Milena","Lena","Julius","Sarah","Jessy","Mina","Caro","Rebekka","Riku","Tessa","Daniel","Tim","Victor","Domi","Florian","Emina","Jotti"
+];
+
+var wwQuestions = [
+  "… aus einem fremden Klo trinken, wenn Jotti sagt „komm, nur ein Schluck“",
+  "… Apfelwein aus einem Schuh trinken, wenn er kalt ist",
+  "… für 50 € mit jemandem rummachen, den er/sie gerade erst kennengelernt hat",
+  "… betrunken sagen: „Also sexuell gesehen…“ und dann komplett abschweifen",
+  "… nackt durch die Stadt laufen, wenn niemand filmen darf",
+  "… bei einer Party jemanden küssen und danach so tun, als wäre es aus Versehen gewesen",
+  "… einen Apfelwein exen, der schon seit Stunden rumsteht",
+  "… beim Sex an was völlig Unpassendes denken und trotzdem weitermachen",
+  "… für Geld mit jemandem schlafen, den man eigentlich unsympathisch findet",
+  "… sagen: „Ich bin gar nicht so betrunken“ – und dann sofort stolpern",
+  "… mit jemandem flirten, obwohl der/die Partner*in daneben sitzt",
+  "… einen One-Night-Stand schönreden als „emotionale Erfahrung“",
+  "… zwei Tage hintereinander dieselbe Unterhose tragen, weil „geht schon noch“",
+  "… auf der Toilette einen Deep Talk über Gefühle anfangen",
+  "… betrunken sagen: „Sex ist mir eigentlich gar nicht so wichtig“",
+  "… für Geld einen Tag lang komplett horny wirken",
+  "… beim Küssen lachen, weil es awkward ist",
+  "… nach dem Sex direkt Hunger haben und über Essen reden",
+  "… jemanden daten, nur weil der Humor stimmt",
+  "… in einer Runde viel zu intime Details droppen",
+  "… einen Apfelwein mehr trinken, obwohl es wirklich eine schlechte Idee ist",
+  "… bei „Wahrheit oder Pflicht“ viel zu ehrlich sein",
+  "… mit jemandem schlafen und danach direkt bereuen – aber es nochmal tun",
+  "… bei Alkohol plötzlich extrem touchy werden",
+  "… einen Crush haben, den niemand nachvollziehen kann",
+  "… für Geld mit jemandem rummachen, den man vorher ausgeschlossen hat",
+  "… aus Trotz noch einen trinken",
+  "… bei einem Flirt völlig falsche Signale senden",
+  "… nach Alkohol denken, man wäre unfassbar attraktiv",
+  "… einen peinlichen Sex-Fail erzählen und dabei lachen",
+  "… betrunken jemanden anrufen, der definitiv nicht angerufen werden sollte",
+  "… bei einer Party mehr Interesse an Gesprächen als an Sex haben (für 30 Minuten)",
+  "… sagen: „Das war jetzt sehr Jotti-coded“ und damit alles rechtfertigen",
+  "… Apfelwein mit etwas mischen, was absolut nicht zusammenpasst",
+  "… bei sexuellen Gesprächen viel zu ernst werden",
+  "… mit jemandem schlafen und danach sagen: „Das war jetzt nicht emotional“",
+  "… einen Fetisch witzig finden, bis es real wird",
+  "… in einer Diskussion über Sex plötzlich politisch werden",
+  "… sich vornehmen, heute keinen Alkohol zu trinken – und dann doch eskalieren",
+  "… jemanden attraktiv finden, nur weil er Apfelwein mag",
+  "… bei einem Date über Ex-Stories reden",
+  "… betrunken Grenzen verschwimmen lassen (nur verbal)",
+  "… für Geld etwas sehr Ekliges trinken",
+  "… bei sexuellen Witzen zu weit gehen und dann sagen: „War nur Spaß“",
+  "… sagen: „Ich bin eigentlich voll erwachsen“ – und dann das Gegenteil beweisen",
+  "… sich nach Alkohol unsterblich fühlen",
+  "… aus Gruppendruck etwas sehr Dummes tun",
+  "… bei Apfelwein sehr philosophisch werden",
+  "… Sexualität analysieren, als wäre es eine Examensfrage",
+  "… am nächsten Tag sagen: „Also SO schlimm war’s wirklich nicht.“"
+];
+
+var wwPool = wwQuestions.slice();
+
+function pickWWPerson(exclude){
+  // Florian & Emina deutlich seltener
+  var weights = { "Florian": 0.2, "Emina": 0.2 };
+
+  var pool = [];
+  var total = 0;
+
+  for (var i = 0; i < wwPeople.length; i++){
+    var name = wwPeople[i];
+    if (name === exclude) continue;
+    var w = (typeof weights[name] === "number") ? weights[name] : 1;
+    if (w <= 0) continue;
+    total += w;
+    pool.push({ name: name, cum: total });
+  }
+
+  var r = Math.random() * total;
+  for (var j = 0; j < pool.length; j++){
+    if (r < pool[j].cum) return pool[j].name;
+  }
+  return pool.length ? pool[pool.length - 1].name : "";
+}
+
+function drawWW(){
+  if (wwPool.length === 0) {
+    setText("wwResult", "✅ Alle Fragen gezogen. Reset drücken für eine neue Runde.");
+    setText("wwMeta", "");
+    return;
+  }
+
+  var a = pickWWPerson(null);
+  var b = pickWWPerson(a);
+
+  var idx = Math.floor(Math.random() * wwPool.length);
+  var q = wwPool.splice(idx, 1)[0];
+
+  setText("wwResult", "👥 " + a + " ODER " + b + " " + q + "?");
+  setText("wwMeta", "Noch im Pool: " + wwPool.length + " / " + wwQuestions.length);
+}
+
+function resetWW(){
+  wwPool = wwQuestions.slice();
+  setText("wwResult", "🔄 Reset! Zieh die nächste Frage.");
+  setText("wwMeta", "Noch im Pool: " + wwPool.length + " / " + wwQuestions.length);
+}
+
 /* ========= Random Facts ========= */
 var randomFacts = [
   "Josi hat sich die Schamhaare blau gefärbt.",
@@ -536,7 +685,14 @@ var randomFacts = [
   "Milena & Johanna haben im selben Studi-Wohnheim gewohnt (Mitleid für Milena).",
   "Jotti wurde schon 6× auf Instagram gesperrt u.a. wegen eines sehr dummen Missverständnisses (ihr wurde Anstiftung zu Terrorismus vorgeworfen).",
   "Jotti hat mal ein Familie im McDonalds unwissentlich mit der Geschichte ihres stecken gebliebenen Softtampons beschallt. Daniel war verstört.",
-  "Gastbeitrag von Tessa: T.C. penis ist medium girthy, Curved to the left, medium to bigger balls w hair on em. (Fragt sie wer T.C. ist)."
+  "Gastbeitrag von Tessa: (zensiert). (Fragt sie wer T.C. ist).",
+  "Es sind 4 LESBEN heute anwesend.",
+  "Johannas Vater war Lehrer an ihrer schule.",
+  "Johanna hat zwei spitznamen: Jotti und Jojo und wer welchen spitznamen nutzt sagt sehr viel über ihn aus.",
+  "Johanna HASST spätzle undgnoccis.",
+  "Honey und Mino sind talentierte künstlerinnen.",
+  "Johanna hat schon in der Schulzeit pinke barbie websites gebaut.",
+  "Johanna nimmt ihre tabletten immer mit cola zero."
 ];
 
 var factsPool = randomFacts.slice();
@@ -551,6 +707,63 @@ function drawRandomFact(){
   var picked = factsPool.splice(idx, 1)[0];
   setText("factResult", "🗝️ " + picked);
   setText("factMeta", "Noch in der Kiste: " + factsPool.length + " / " + randomFacts.length);
+}
+
+/* ========= NEU: Wer bin ich (10s Delay, nur Leute aus der Runde) ========= */
+var whoPeople = [
+  "Sonja","Jonas","Elias","Mirnesa","Honey","Mona","Zineb","Milena","Lena","Julius","Sarah","Jessy","Mina","Caro","Rebekka","Riku","Tessa","Daniel","Tim","Victor","Domi","Florian","Emina","Jotti"
+];
+var whoPool = whoPeople.slice();
+var whoTimer = null;
+var whoBusy = false;
+
+function drawWho(){
+  if (whoBusy) return;
+
+  if (whoPool.length === 0) {
+    setText("whoResult", "✅ Alle Personen durch. Reset drücken!");
+    setText("whoMeta", "");
+    setText("whoCountdown", "");
+    return;
+  }
+
+  whoBusy = true;
+  var btn = document.getElementById("btnWho");
+  if (btn) btn.disabled = true;
+
+  setText("whoResult", "");
+  var idx = Math.floor(Math.random() * whoPool.length);
+  var picked = whoPool.splice(idx, 1)[0];
+
+  var t = 10;
+  setText("whoCountdown", "⏳ " + t + "…");
+  setText("whoMeta", "Noch im Pool: " + whoPool.length + " / " + whoPeople.length);
+
+  if (whoTimer) clearInterval(whoTimer);
+  whoTimer = setInterval(function(){
+    t--;
+    if (t <= 0) {
+      clearInterval(whoTimer);
+      whoTimer = null;
+      setText("whoCountdown", "");
+      setText("whoResult", picked);
+      whoBusy = false;
+      if (btn) btn.disabled = false;
+      return;
+    }
+    setText("whoCountdown", "⏳ " + t + "…");
+  }, 1000);
+}
+
+function resetWho(){
+  if (whoTimer) { clearInterval(whoTimer); whoTimer = null; }
+  whoPool = whoPeople.slice();
+  setText("whoCountdown", "");
+  setText("whoResult", "🔄 Reset!");
+  setText("whoMeta", "Noch im Pool: " + whoPool.length + " / " + whoPeople.length);
+  whoBusy = false;
+  var btn = document.getElementById("btnWho");
+  if (btn) btn.disabled = false;
 }
 
 /* ========= Komplimente ========= */
@@ -606,6 +819,24 @@ function getCompliment(){
   setText("complimentHint", "✅ Schatzkiste geöffnet. Jetzt bitte kurz stolz lächeln.");
 }
 
+/* ========= NEU: Love Calculator ========= */
+function lovePercent(){
+  var a = normalizeName(document.getElementById("loveA").value);
+  var b = normalizeName(document.getElementById("loveB").value);
+
+  if (!a || !b) {
+    setText("loveResult", "💘 Bitte zwei Namen eingeben.");
+    return;
+  }
+
+  function isJotti(x){
+    return x.includes("jotti") || x.includes("johanna");
+  }
+
+  var pct = (isJotti(a) || isJotti(b)) ? 100 : (Math.floor(Math.random()*100) + 1);
+  setText("loveResult", "💘 Ergebnis: " + pct + "%");
+}
+
 /* ========= Button Bindings (keine Doppelklick-Bugs) ========= */
 addSafeTap(document.getElementById("btnChallenge"), function(){ challenge(); });
 addSafeTap(document.getElementById("btnApfelwein"), function(){ apfelweinDecision(); });
@@ -613,7 +844,15 @@ addSafeTap(document.getElementById("btnCrazyDraw"), function(){ drawCrazyChallen
 addSafeTap(document.getElementById("btnCrazyReset"), function(){ resetCrazyChallenges(); });
 addSafeTap(document.getElementById("btnFact"), function(){ drawRandomFact(); });
 addSafeTap(document.getElementById("btnCompliment"), function(){ getCompliment(); });
+
+// NEU:
+addSafeTap(document.getElementById("btnWW"), function(){ drawWW(); });
+addSafeTap(document.getElementById("btnWWReset"), function(){ resetWW(); });
+addSafeTap(document.getElementById("btnWho"), function(){ drawWho(); });
+addSafeTap(document.getElementById("btnWhoReset"), function(){ resetWho(); });
+addSafeTap(document.getElementById("btnLove"), function(){ lovePercent(); });
 </script>
 
 </body>
 </html>
+```
