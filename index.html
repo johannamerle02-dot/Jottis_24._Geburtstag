@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jotti wird 24 🍎🍷</title>
+
+<style>
+:root{
+  --pink:#ff5fa2;
+  --pink-soft:#ffd1e6;
+  --bg:#fff5fa;
+  --card:#ffffff;
+  --text:#2b2b2b;
+  --muted:#777;
+  --shadow:0 18px 40px rgba(255,95,162,.25);
+  --radius:20px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:
+    radial-gradient(800px 400px at 10% -10%, rgba(255,95,162,.25), transparent 60%),
+    radial-gradient(600px 400px at 90% 10%, rgba(255,95,162,.18), transparent 60%),
+    var(--bg);
+  color:var(--text);
+}
+
+.wrap{max-width:1100px;margin:auto;padding:28px}
+
+h1{
+  font-size:clamp(32px,4vw,52px);
+  margin:0 0 10px;
+}
+
+.sub{color:var(--muted);font-size:16px}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+  margin-bottom:22px;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--pink);
+  color:white;
+  font-weight:700;
+  margin-right:8px;
+  margin-bottom:8px;
+}
+
+.list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+.person{
+  padding:14px;
+  border-radius:16px;
+  background:#fff;
+  border:2px dashed var(--pink-soft);
+}
+
+.person b{display:block;margin-bottom:6px}
+
+.small{font-size:14px;color:var(--muted)}
+
+button{
+  background:var(--pink);
+  color:white;
+  border:none;
+  border-radius:14px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{opacity:.9}
+
+.table-area{
+  border:3px dashed var(--pink);
+  border-radius:18px;
+  padding:20px;
+  min-height:180px;
+  background:#fff0f7;
+}
+
+.draggable{
+  padding:8px 12px;
+  border-radius:999px;
+  background:white;
+  border:2px solid var(--pink);
+  display:inline-block;
+  margin:6px;
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:manipulation;
+}
+
+.graveyard{
+  background:#fff0f7;
+  border-radius:20px;
+  padding:22px;
+  border:3px dotted var(--pink);
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  margin-top:30px;
+}
+
+input::placeholder{color:#b88aa0}
+#factResult, #complimentResult{
+  background:#fff0f7;
+  border:2px dashed var(--pink-soft);
+  border-radius:16px;
+  padding:12px 14px;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="card">
+  <h1>🎀 Jotti wird 24 🎀</h1>
+  <p class="sub">Ein entspannter, lustiger Montagabend mit Apfelwein, Essen & Schabernack. Bringt gerne lustige Spiele mit!</p>
+
+  <span class="badge">📅 Montag, 09.02.2026</span>
+  <span class="badge">⏰ 18:00 Uhr</span>
+  <span class="badge">📍 Apfelweinwirtschaft Frau Rauscher </span>
+<p id="countdown" style="margin-top:16px;font-weight:900;font-size:18px;color:#ff5fa2;">
+  ⏳ Countdown lädt …
+</p>
+
+</div>
+
+<!-- AKTIVITÄTEN -->
+<div class="card">
+  <h2>🍎 Was passiert?</h2>
+  <ul>
+    <li>Apfelwein trinken (vermutlich mehr als geplant)</li>
+    <li>Essen bis man kugelrund ist</li>
+    <li>Schabernack, Gelächter & leicht eskalierende Gespräche</li>
+    <li>Alles sehr entspannt, denn: Prüfungsphase 🧠💀</li>
+  </ul>
+</div>
+
+<!-- GÄSTE -->
+<div class="card">
+  <h2>💗 Die Gästeliste</h2>
+  <div class="list">
+
+    <div class="person"><b>Sonja</b><span class="small">Klassischer roter Lippenstift. Hoffentlich weniger Examensstress als erwartet.</span></div>
+    <div class="person"><b>Jonas & Elias</b><span class="small">Mathemäuse, vermutlich Arm in Arm. Jottis Eskapaden nicht einkalkuliert.</span></div>
+    <div class="person"><b>Mirnesa</b><span class="small">Schlaue Ratschläge, tiefgründige Gespräche garantiert.</span></div>
+    <div class="person"><b>Honey</b><span class="small">Goldschmuck-Expertin. Trägt sehr wahrscheinlich etwas Spannendes.</span></div>
+    <div class="person"><b>Mona</b><span class="small">Beziehungsratschläge (vor allem bestätigende). Top Wanderpartnerin.</span></div>
+    <div class="person"><b>Zineb</b><span class="small">Perfekt für Schweden oder Bio-Talks. Steckt eventuell noch im Labor.</span></div>
+    <div class="person"><b>Milena</b><span class="small">Will nach Freiburg: dringend davon überzeugen, in Frankfurt zu bleiben!</span></div>
+    <div class="person"><b>Lena</b><span class="small">Mitten im Staatsexamen. Bitte kollektiv gut zureden.</span></div>
+    <div class="person"><b>Julius</b><span class="small">Nach Jotti vermutlich der lustigste. Weiß zu viel über Jotti: Nicht alles stimmt!</span></div>
+    <div class="person"><b>Sarah</b><span class="small">Professionellste Lesbe. Chaotische Stories & ehrliche Ratschläge.</span></div>
+    <div class="person"><b>Jessy</b><span class="small">Extrem guter Gesprächspartner, ihre Augen sind da oben! Talentiert & überraschend wissend.</span></div>
+    <div class="person"><b>Mina</b><span class="small">Hat zwar einen Freund, aber Jotti liebt sie trotzdem am meisten.</span></div>
+    <div class="person"><b>Caro</b><span class="small">IKEA-Finds, wilde Tipps, frisch in Gießen, hier gibt es viel zu erzählen.</span></div>
+    <div class="person"><b>Rebekka</b><span class="small">Jottis Schwester. Zukünftige Toxikologin: Also Getränke im Auge behalten!</span></div>
+    <div class="person"><b>Riku</b><span class="small">Jottis Schwester. Gaming-Wissen Level 100, evtl. noch bei der Arbeit.</span></div>
+    <div class="person"><b>Tessa</b><span class="small">Kennt alle Memes. War ein Jahr in Belgien, das bedeutet Gesprächsstoff.</span></div>
+    <div class="person"><b>Daniel</b><span class="small">Extrem offen & ehrlich. Fragt ihn alles.</span></div>
+    <div class="person"><b>Tim</b><span class="small">Luft- & Raumfahrtmaus. Viel Apfelwein & immer ein Spruch.</span></div>
+    <div class="person"><b>Victor</b><span class="small">Mehr als Finance Bro. Interessiert sich sehr für Jotti.</span></div>
+    <div class="person"><b>Johanna (Jotti)</b><span class="small">Ich!</span></div>
+    <div class="person"><b>Florian & Emina</b><span class="small">Neue Mitbewohner. Müssen unbedingt ausgefragt werden.</span></div>
+
+  </div>
+</div>
+
+<!-- SITZORDNUNG -->
+<div class="card">
+  <h2>🪑 Sitzordnung-Experiment</h2>
+  <p class="small">Zieh dir deine perfekte Tischordnung zusammen.</p>
+
+  <div id="table" class="table-area">
+    <b>🍽️ Großer Tisch</b>
+  </div>
+
+  <div id="names">
+    <span class="draggable">Sonja</span>
+    <span class="draggable">Jonas</span>
+    <span class="draggable">Elias</span>
+    <span class="draggable">Jotti</span>
+    <span class="draggable">Victor</span>
+    <span class="draggable">Mirnesa</span>
+    <span class="draggable">Honey</span>
+    <span class="draggable">Mona</span>
+    <span class="draggable">Zineb</span>
+    <span class="draggable">Milena</span>
+    <span class="draggable">Lena</span>
+    <span class="draggable">Julius</span>
+    <span class="draggable">Sarah</span>
+    <span class="draggable">Jessy</span>
+    <span class="draggable">Emina</span>
+    <span class="draggable">Florian</span>
+    <span class="draggable">Mina</span>
+    <span class="draggable">Caro</span>
+    <span class="draggable">Rebekka</span>
+    <span class="draggable">Riku</span>
+    <span class="draggable">Tessa</span>
+    <span class="draggable">Daniel</span>
+    <span class="draggable">Tim</span>
+  </div>
+</div>
+
+<!-- CHALLENGE -->
+<div class="card">
+  <h2>🎲 Die Challenge</h2>
+  <p>Drück den Knopf. Du bekommst eine Person. Erzähl ihr eine überzeugende Lüge.</p>
+  <button id="btnChallenge">🎯 Zufällige Person</button>
+  <p id="result" style="margin-top:12px;font-weight:700;"></p>
+</div>
+
+<!-- APFELWEIN-GENERATOR -->
+<div class="card">
+  <h2>🍎 Soll ich noch einen Apfelwein trinken?</h2>
+  <p class="small">Wissenschaftlich fundiert (Jotti Research Institute).</p>
+  <button id="btnApfelwein">🍷 Entscheidung einholen</button>
+  <p id="apfelweinResult" style="margin-top:12px;font-weight:800;"></p>
+</div>
+
+<!-- CRAZY CHALLENGE BOARD -->
+<div class="card">
+  <h2>🧠🍎 Crazy Challenge Board</h2>
+  <p class="small">Zieh eine Challenge. Du MUSST sie machen, sonst wird Jotti dein neuer Stepfather. Zieh nur eine neue, wenn du die alte abgeschlossen hast. Nicht schummeln und alle durchklicken (ich spüre das).</p>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+    <button id="btnCrazyDraw">🎴 Challenge ziehen</button>
+    <button id="btnCrazyReset" style="background:#ffd1e6;color:#2b2b2b;">🔄 Reset</button>
+  </div>
+
+  <p id="crazyChallengeResult" style="margin-top:14px;font-weight:900;font-size:18px;"></p>
+  <p id="crazyChallengeMeta" class="small" style="margin-top:6px;"></p>
+</div>
+
+<!-- SCHATZKISTE: RANDOM FACTS -->
+<div class="card">
+  <h2>🧰 Schatzkiste der Random Facts</h2>
+  <p class="small">Zieh einen Fakt. Wenn er wahr ist: Prost. Wenn er falsch ist: auch Prost.</p>
+
+  <button id="btnFact">🗝️ Fakt ziehen</button>
+  <p id="factResult" style="margin-top:14px;font-weight:900;font-size:18px;"></p>
+  <p id="factMeta" class="small" style="margin-top:6px;"></p>
+</div>
+
+<!-- SCHATZKISTE: KOMPLIMENTE -->
+<div class="card">
+  <h2>🎀 Schatzkiste der Komplimente</h2>
+  <p class="small">Gib deinen Vornamen ein und hol dir ab, was Jotti dir schon immer sagen wollte.</p>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+    <input id="nameInput" placeholder="Dein Vorname..." style="
+      padding:12px 14px;border-radius:14px;border:2px solid #ffd1e6;outline:none;
+      font-weight:700;min-width:220px;
+    ">
+    <button id="btnCompliment">💎 Kompliment öffnen</button>
+  </div>
+
+  <p id="complimentResult" style="margin-top:14px;font-weight:900;font-size:18px;"></p>
+  <p class="small" id="complimentHint" style="margin-top:6px;"></p>
+</div>
+
+
+<!-- FRIEDHOF -->
+<div class="graveyard">
+  <h2>🪦 Honorable Mentions (leider nicht dabei)</h2>
+  <ul>
+    <li>Eva – liebevollste Maus, in Berlin gefangen</li>
+    <li>Leana – Leipzig-Praktikum, aber im Herzen dabei</li>
+    <li>Josi – blauer Schlumpf, leider arbeiten</li>
+    <li>Theresa – erster Tag als Assistenzzahnärztin, Respekt 🦷</li>
+  </ul>
+</div>
+
+<footer>
+  <p>Ich freue mich riesig auf den Abend 💗<br>
+  Fühlt euch gedrückt & bis ganz bald,<br>
+  <b>Jotti</b></p>
+</footer>
+
+</div>
+
+<script>
+/* ========= Helpers ========= */
+function setText(id, txt){
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (typeof el.innerText !== "undefined") el.innerText = txt;
+  else el.textContent = txt;
+}
+
+/* ✅ iOS-safe Tap: verhindert Doppelauslösung (pointer/touch/click) */
+function addSafeTap(el, handler){
+  if (!el) return;
+
+  var last = 0;
+
+  function run(e){
+    var now = Date.now();
+    if (now - last < 350) return;
+    last = now;
+
+    if (e && e.cancelable) e.preventDefault();
+    handler(e);
+  }
+
+  if (window.PointerEvent) {
+    el.addEventListener("pointerup", run, { passive: false });
+  } else if ("ontouchend" in window) {
+    el.addEventListener("touchend", run, { passive: false });
+  } else {
+    el.addEventListener("click", run, { passive: false });
+  }
+}
+
+/* ========= Countdown (robust) ========= */
+var partyTime = new Date(2026, 1, 9, 18, 0, 0); // 09.02.2026 18:00
+
+function updateCountdown(){
+  var now = new Date();
+  var diff = partyTime.getTime() - now.getTime();
+
+  if (diff <= 0) {
+    var sinceMs = now.getTime() - partyTime.getTime();
+    var totalMinutes = Math.floor(sinceMs / (1000 * 60));
+    var h = Math.floor(totalMinutes / 60);
+    var m = totalMinutes % 60;
+
+    var msg = (h >= 1)
+      ? "🍎 Seit " + h + " Std. " + m + " Min. wird getrunken."
+      : "🍎 Seit " + m + " Min. wird getrunken.";
+
+    setText("countdown", msg);
+    return;
+  }
+
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  var minutes = Math.floor((diff / (1000 * 60)) % 60);
+  var seconds = Math.floor((diff / 1000) % 60);
+
+  setText("countdown",
+    "⏳ Noch " + days + " Tage · " + hours + " Std. · " + minutes + " Min. · " + seconds + " Sek. bis Apfelwein."
+  );
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+document.addEventListener("visibilitychange", function(){
+  if (!document.hidden) updateCountdown();
+});
+
+/* ========= Sitzordnung (zuverlässig per Tap-to-move) ========= */
+(function(){
+  var names = document.getElementById("names");
+  var table = document.getElementById("table");
+  if (!names || !table) return;
+
+  function getChip(target){
+    if (!target || !target.closest) return null;
+    return target.closest(".draggable");
+  }
+
+  function moveChip(chip){
+    if (!chip) return;
+    if (chip.parentNode === names) table.appendChild(chip);
+    else names.appendChild(chip);
+  }
+
+  addSafeTap(names, function(e){
+    var chip = getChip(e.target);
+    if (!chip) return;
+    moveChip(chip);
+  });
+
+  addSafeTap(table, function(e){
+    var chip = getChip(e.target);
+    if (!chip) return;
+    moveChip(chip);
+  });
+})();
+
+/* ========= Challenge ========= */
+var people = [
+"Sonja",
+  "Jonas",
+  "Elias",
+  "Jonas & Elias (Duo-Mode)",
+  "Mirnesa",
+  "Honey",
+  "Mona",
+  "Zineb",
+  "Milena",
+  "Lena",
+  "Julius",
+  "Sarah",
+  "Jessy",
+  "Mina",
+  "Caro",
+  "Rebekka",
+  "Riku",
+  "Tessa",
+  "Daniel",
+  "Tim",
+  "Victor",
+  "Johanna (Jotti)",
+  "Florian",
+  "Emina",
+  "Florian & Emina (Interrogation Bundle)"
+];
+
+var lieTypes = [
+  "über dich selbst",
+  "über Jotti",
+  "ein komplett falscher Fakt (mit absoluter Überzeugung)"
+];
+
+function challenge(){
+  var p = people[Math.floor(Math.random()*people.length)];
+  var t = lieTypes[Math.floor(Math.random()*lieTypes.length)];
+  setText("result", "🎭 Deine Zielperson: " + p + " — erzähl ihr eine glaubhafte Lüge " + t + ".");
+}
+
+/* ========= Apfelwein ========= */
+var apfelweinAnswers = [
+  "Ja!",
+  "Sogar 2 noch!",
+  "Unbedingt!",
+  "Aber ganz schnell!"
+];
+
+function apfelweinDecision(){
+  var a = apfelweinAnswers[Math.floor(Math.random() * apfelweinAnswers.length)];
+  setText("apfelweinResult", "📈 Ergebnis: " + a);
+}
+
+/* ========= Crazy Challenge Board ========= */
+var crazyChallenges = [
+  "Exe deinen ersten Apfelwein oder alternativ: ex dein erstes Getränk (auch alkoholfrei zählt!).",
+  "Versuche deinen Sitznachbarn davon abzuhalten, einen Schluck zu trinken bis er dich fragt was das soll.",
+  "Steh random auf und bleib stehen, bis mindestens 2 Leute gefragt haben, warum du stehst.",
+  "Benutze mindestens 20× das Wort „Karussell“.",
+  "Bestelle zwei Getränke auf einmal (Apfelwein ODER alkoholfrei) und trinke beide gleichzeitig.",
+  "Bring eine Person (nicht dein Sitznachbar) dazu, mit dir zum Klo zu gehen.",
+  "Erzähl jemandem ein komplett absurdes, OFFENSICHTLICHES Gerücht: \"Jotti ist schwanger und wird es heute allen erzählen. Ich mache mir nur Sorgen wegen dem Apfelwein.\"",
+  "Zielperson: rechter Sitznachbar. Stell zu allem Gegenfragen, bis er/sie genervt ist.",
+  "Zielperson: linker Sitznachbar. Mach so viele Komplimente, bis die Person peinlich berührt ist.",
+  "Schrei einmal laut „TRINKEEEEN!“ und setz dich dann sofort wieder hin, als wäre nichts passiert.",
+  "Fang plötzlich extrem komisch an zu lachen, bis jemand fragt, was los ist. Sag dann: \"Ich hab grad an Freidrich Merz gedacht.\"",
+  "Challenge jemanden zu einem Wettkampf: Wer erzählt trinkt mehr Apfelwein?",
+  "Gib deinem Sitznachbarn ein Getränk aus (auch alkoholfrei zählt).",
+  "Initiiere eine Spielrunde!.",
+  "Stimme ein Lied an (z.B. „Griechischer Wein“) und ziehe mindestens 10 Sekunden durch.",
+  "Sag bei jeder Gelegenheit „Dazu habe ich eine These“ und trag sie mit voller Ernsthaftigkeit vor.",
+  "Mach aus jedem Satz eine Examensfrage: „…und was wäre die Definition davon?“",
+  "zensiert!",
+  "Versuche 3 Leute dazu zu bringen, gleichzeitig „Prost Jotti“ zu sagen.",
+  "Trinke einen Schluck Apfelwein mit absolut übertriebener Weinverkostungsbeschreibung",
+  "Heb dein Glas und sag „Auf Jotti!“ egal was gerade gesagt wurde",
+  "Flüstere deinem Sitznachbarn etwas Dramatisches zu und sag dann: „Vergiss es.“",
+  "Starte einen Toast auf etwas komplett Banales (z.B. „auf schöne Servietten“).",
+  "Trink deinen nächsten Schluck mit beiden Händen, als wäre es ein Ritual.",
+  "Unterbrich dich selbst und sag: „Das erzähl ich später nochmal besser.“",
+  "Beende einen Satz mit: „…und das wäre klausurrelevant.“",
+  "Stell eine komplett unnötige Definitionsfrage.",
+  "Sag: „Das ist ein klassisches Beispiel für…“ und sag dann nichts mehr.",
+  "Bewerte ein Gespräch mit „Inhaltlich stark, aber Struktur ausbaufähig.“",
+  "Fang an zu klatschen. Hör nach 3 Sekunden wieder auf.",
+  "Heb dein Glas und sag: „Das musste gesagt werden.“",
+  "Sag laut: „Ich glaub, jetzt ist der Abend offiziell gestartet.“",
+  "Sag zu etwas das gar keinen Sinn macht: „Das war sehr Jotti-coded.“",
+  "Behaupte, Jotti habe eine sehr starke Meinung zu etwas völlig Irrelevantem (z. B. Stühle).",
+  "Kündige an: „Später erzähl ich euch noch die Jotti-Origin-Story.“ (Tu es nie. Wenn dich jemand drauf anspricht leugen!).",
+  "Mach einen extrem unlustigen Witz und lache laut.",
+  "Sag: „Ich fühl mich gerade sehr verstanden von dir.“, obwohl es um was ganz banales geht.",
+  "Sag: „Ich hab mir sehr gewünscht, dass du heute hier bist.“ (Voll süß).",
+  "Gib jemandem der nicht dein Sitznachbar ist eine Umarmung.",
+  "Mir fällt nichts mehr ein. Mach also was komplett Komisches und sag das war Jottis Idee."
+];
+
+var crazyPool = crazyChallenges.slice();
+
+function drawCrazyChallenge(){
+  if (crazyPool.length === 0) {
+    setText("crazyChallengeResult", "✅ Alle Challenges aufgebraucht. Reset drücken für eine neue Runde.");
+    setText("crazyChallengeMeta", "");
+    return;
+  }
+
+  var idx = Math.floor(Math.random() * crazyPool.length);
+  var picked = crazyPool.splice(idx, 1)[0];
+
+  setText("crazyChallengeResult", "🎴 " + picked);
+  setText("crazyChallengeMeta", "Noch im Pool: " + crazyPool.length + " / " + crazyChallenges.length);
+}
+
+function resetCrazyChallenges(){
+  crazyPool = crazyChallenges.slice();
+  setText("crazyChallengeResult", "🔄 Reset! Zieh die nächste Challenge.");
+  setText("crazyChallengeMeta", "Noch im Pool: " + crazyPool.length + " / " + crazyChallenges.length);
+}
+
+/* ========= Random Facts ========= */
+var randomFacts = [
+  "Josi hat sich die Schamhaare blau gefärbt.",
+  "Jessys Lieblingstier ist die Raupe. (iykyk)",
+  "Jotti hat mal einen Liter Milch in Vics Büro über Steckdosen verteilt und das Gebäude kurz in den Offline-Modus versetzt (ultra cringe).",
+  "Rebekka & Johanna haben als Kinder abwechselnd gesagt: „Riech mal, mein Po riecht nach Vanille/Erdbeere“ — bis Papa das gesehen hat und maximal verstört war.",
+  "Jotti und Vic sind seit 2 Jahren zusammen und still no ring, wow.",
+  "Sonja hat in einem Restaurant angerufen und gesagt: „Weiß am Apparat, ich hätte gern einen Tich. (ja mit ch)“",
+  "Elias’ Seelentier ist der Panther.",
+  "Julius & Johanna sind seit der 5. Klasse im selben Reli-Unterricht befreundet, weil Johanna ihn wegen seiner komisch langen, geringelten Socken genervt hat.",
+  "Milena & Johanna haben im selben Studi-Wohnheim gewohnt (Mitleid für Milena).",
+  "Jotti wurde schon 6× auf Instagram gesperrt u.a. wegen eines sehr dummen Missverständnisses (ihr wurde Anstiftung zu Terrorismus vorgeworfen).",
+  "Jotti hat mal ein Familie im McDonalds unwissentlich mit der Geschichte ihres stecken gebliebenen Softtampons beschallt. Daniel war verstört.",
+  "Gastbeitrag von Tessa: T.C. penis ist medium girthy, Curved to the left, medium to bigger balls w hair on em. (Fragt sie wer T.C. ist)."
+];
+
+var factsPool = randomFacts.slice();
+
+function drawRandomFact(){
+  if (factsPool.length === 0) {
+    setText("factResult", "✅ Alle Facts gezogen. Refresh oder ich füll euch neue Lore nach.");
+    setText("factMeta", "");
+    return;
+  }
+  var idx = Math.floor(Math.random() * factsPool.length);
+  var picked = factsPool.splice(idx, 1)[0];
+  setText("factResult", "🗝️ " + picked);
+  setText("factMeta", "Noch in der Kiste: " + factsPool.length + " / " + randomFacts.length);
+}
+
+/* ========= Komplimente ========= */
+var compliments = {
+  "sonja": "Ich schätze es sehr, dass du dir immer Mühe machst, besondere Treffen und Events zu planen.",
+  "elias": "Ich liebe deinen trockenen Humor und deine ehrliche Art.",
+  "jonas": "Ich liebe deine Spontanität und Lebensfreude — das ist ansteckend.",
+  "mirnesa": "Ich liebe es, dass du immer das Richtige sagst und zu jeder Zeit für mich da bist.",
+  "honey": "Ich liebe, wie kreativ und talentiert du bist — und wie viel du weißt.",
+  "mona": "Ich liebe, wie lebensfroh du bist. Du lässt dich von nichts unterkriegen und hast so viele neue Hobbys entdeckt. Du bist mein Vorbild.",
+  "zineb": "Ich liebe, wie ehrgeizig du bist!",
+  "milena": "Ich unterhalte mich mit dir immer super: politisch UND lustig. Und ich liebe, dass du Hebamme wirst, das finde ich toll.",
+  "lena": "Ich liebe deinen Humor und deine Art, frei raus zu reden.",
+  "julius": "Du bist mein bester Freund. Ich hoffe, du weißt, dass ich es liebe, dass du immer für mich da bist.",
+  "sarah": "Du bist unvorhersehbar und ich liebe es. Bist du gerade in Peru?",
+  "leana": "Mit dir fühlt man sich immer verstanden, du bist einer der verständnisvollsten Menschen überhaupt.",
+  "jessy": "Du zeigst deinen Freunden so viel Zuneigung, das schätze ich sehr.",
+  "mina": "Du bist und bleibst mein Alpha-Wolf.",
+  "caro": "Mit dir kann man wirklich über alles reden und zu allem Ratschläge einholen!",
+  "rebekka": "Leck Eier — ich bin Schwester Nummer 1. 💗",
+  "riku": "Leck Eier — ich bin Schwester Nummer 1. 💗",
+  "tessa": "Mit dir kann man über jede Scheiße reden und dich immer anrufen.",
+  "daniel": "Du bist einer der offensten und ehrlichsten Menschen, die ich kenne, ich liebe das. Und deine Insta-Reels.",
+  "victor": "Du bist wirklich der beste Freund, den man sich vorstellen kann: immer da, Gentleman-Vibes, hörst zu und nimmst mir Sorgen. Ich liebe dich!",
+  "tim": "Du bist immer ready was zu machen und nimmst lange Wege auf dich. Ich schätze das sehr und ich lieb deine Ehrlichkeit & Insta-Reels.",
+  "eva": "Du bist immer für mich da, hast ein offenes Ohr. Mit dir kann ich über alles reden und fühle mich zuhause. Ich liebe dich, pookie!",
+  "theresa": "Ich bin unfassbar stolz auf dich. Und abseits von allem Erfolg bist du ULTRA funny. Ich liebe dich!",
+  "johanna": "Happy Birthday, Queen. Du bist ikonisch. (Und ja: das ist jetzt sehr Jotti-coded.)"
+};
+
+function normalizeName(s){
+  return (s || "")
+    .trim()
+    .toLowerCase()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue")
+    .replace(/ß/g, "ss");
+}
+
+function getCompliment(){
+  var raw = document.getElementById("nameInput").value;
+  var key = normalizeName(raw);
+
+  var text = compliments[key];
+  if (!text) {
+    setText("complimentResult", "💎 Ich kenn den Namen noch nicht, aber ich freu mich sehr, dass du da bist. Du bist genau richtig heute. 💗 Oder du hast deinen Namen falsch geschrieben!");
+    setText("complimentHint", "Tipp: Vorname so eingeben wie in der Gästeliste (z.B. „Sonja“, „Mona“, „Victor“).");
+    return;
+  }
+
+  setText("complimentResult", "💎 " + text);
+  setText("complimentHint", "✅ Schatzkiste geöffnet. Jetzt bitte kurz stolz lächeln.");
+}
+
+/* ========= Button Bindings (keine Doppelklick-Bugs) ========= */
+addSafeTap(document.getElementById("btnChallenge"), function(){ challenge(); });
+addSafeTap(document.getElementById("btnApfelwein"), function(){ apfelweinDecision(); });
+addSafeTap(document.getElementById("btnCrazyDraw"), function(){ drawCrazyChallenge(); });
+addSafeTap(document.getElementById("btnCrazyReset"), function(){ resetCrazyChallenges(); });
+addSafeTap(document.getElementById("btnFact"), function(){ drawRandomFact(); });
+addSafeTap(document.getElementById("btnCompliment"), function(){ getCompliment(); });
+</script>
+
+</body>
+</html>
