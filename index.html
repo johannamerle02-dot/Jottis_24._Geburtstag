@@ -248,7 +248,7 @@ input::placeholder{color:#b88aa0}
 
 <!-- CRAZY CHALLENGE BOARD -->
 <div class="card">
-  <h2>🧠🍎 Crazy Challenge Board</h2>
+  <h2>🧠🍎 Crazy Challenge Board (Erst an der Party öffnen!)</h2>
   <p class="small">Zieh eine Challenge. Du MUSST sie machen, sonst wird Jotti dein neuer Stepfather. Zieh nur eine neue, wenn du die alte abgeschlossen hast. Nicht schummeln und alle durchklicken (ich spüre das).</p>
 
   <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
@@ -310,7 +310,7 @@ input::placeholder{color:#b88aa0}
 <!-- SCHATZKISTE: KOMPLIMENTE -->
 <div class="card">
   <h2>🎀 Schatzkiste der Komplimente</h2>
-  <p class="small">Gib deinen Vornamen ein und hol dir ab, was Jotti dir schon immer sagen wollte.</p>
+  <p class="small">Gib deinen Vornamen ein und hol dir ab, was Jotti dir persönlich schon immer sagen wollte.</p>
 
   <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;">
     <input id="nameInput" placeholder="Dein Vorname..." style="
@@ -475,9 +475,9 @@ var people = [
 ];
 
 var lieTypes = [
-  "über dich selbst",
-  "über Jotti",
-  "ein komplett falscher Fakt (mit absoluter Überzeugung)"
+  ":über dich selbst",
+  ":über Jotti",
+  ":ein komplett falscher Fakt (mit absoluter Überzeugung)"
 ];
 
 function challenge(){
@@ -490,6 +490,8 @@ function challenge(){
 var apfelweinAnswers = [
   "Ja!",
   "Sogar 2 noch!",
+  "Ja und dein Sitznachbar auch",
+  "Ja zusammen mit Jotti",
   "Unbedingt!",
   "Aber ganz schnell!"
 ];
@@ -819,7 +821,7 @@ function getCompliment(){
   }
 
   setText("complimentResult", "💎 " + text);
-  setText("complimentHint", "✅ Schatzkiste geöffnet. Jetzt bitte kurz stolz lächeln.");
+  setText("complimentHint", "✅ Schatzkiste geöffnet. Jetzt bitte kurz stolz lächeln. Jotti hat dich lieb.");
 }
 
 /* ========= NEU: Love Calculator ========= */
@@ -858,6 +860,7 @@ addSafeTap(document.getElementById("btnLove"), function(){ lovePercent(); });
 
 </body>
 </html>
+
 
 
 
